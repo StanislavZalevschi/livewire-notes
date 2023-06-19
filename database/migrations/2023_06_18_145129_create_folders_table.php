@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('folders', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->timestamp('pinned_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

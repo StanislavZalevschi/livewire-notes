@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use App\Models\Folder;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 final class FolderRepository
 {
-    public function getAll(): Collection
+    public function paginate(int $limit): LengthAwarePaginator
     {
-        return Folder::query()->with('notes')->get();
+        return Folder::query()->with('notes')->paginate($limit);
     }
 }
